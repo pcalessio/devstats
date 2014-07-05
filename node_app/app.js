@@ -16,6 +16,7 @@ mongoose.connect("mongodb://seedhack_team:seedhack@ds053449.mongolab.com:53449/d
 var conn = mongoose.connection;
 conn.on('error', console.error.bind(console, 'connection error:'));
 
+
 app.use(express.static(__dirname + '/public'));
 
 

@@ -4,11 +4,31 @@
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css"/>
+    <script src="resources/js/raphael.2.1.0.min.js"></script>
+    <script src="resources/js/justgage.1.0.1.min.js"></script>
 
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="config.js"></script>
+  <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 
   <style type="text/css">
+      body {
+          text-align: center;
+      }
+
+      #g1, #g2, #g3 {
+          width:200px; height:160px;
+          display: inline-block;
+          margin: 1em;
+      }
+
+      p {
+          display: block;
+          width: 450px;
+          margin: 2em auto;
+          text-align: left;
+      }
+
   .x.axis line {
   shape-rendering: auto;
 }
@@ -29,10 +49,7 @@
 <body>
 
   <div id="viz"></div>
-
-  <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
-
-
+  <div id="g1"></div>
   <script>(function() {
 
 var n = 243,
@@ -41,7 +58,21 @@ var n = 243,
     count = 0
     data = d3.range(n).map(function() { return 0; });
 
-var margin = {top: 6, right: 0, bottom: 20, left: 40},
+
+      var g1 = new JustGage({
+          id: "g1",
+          value: 0,
+          min: 0,
+          max: 10,
+          title: "Lone Ranger",
+          label: "miles traveled"
+      });
+      setInterval(function() {
+          g1.refresh(count);
+      }, 1000);
+
+
+      var margin = {top: 6, right: 0, bottom: 20, left: 40},
     width = 550 - margin.right,
     height = 120 - margin.top - margin.bottom;
 
@@ -85,8 +116,9 @@ tick();
 
       var socket = io.connect(config.localhost);
       socket.on('newKeyEvent', function (data) {
-          console.log(data);
-          ++count; console.log("keypress", d3.event);
+          ++count;
+          g1.refresh(getRandomInt(0, 8));
+          console.log('refreshed');
       });
 
 function tick() {
@@ -129,5 +161,7 @@ function tickTimeout() {
 }
 
 })()</script>
+
+
 </body>
 </html>
