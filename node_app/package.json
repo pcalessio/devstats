@@ -1,0 +1,15 @@
+{
+  "name": "d3-server-side_seed_hack",
+  "description": "uses d3.js to render charts",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
+  "dependencies": {
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "body-parser": "~1.0.1",
+    "ejs": "~0.8.5",
+    "d3": "~3.3.10",
+    "socket.io": "1.0"
+ }
+}
