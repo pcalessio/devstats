@@ -10,6 +10,7 @@
     "body-parser": "~1.0.1",
     "ejs": "~0.8.5",
     "d3": "~3.3.10",
-    "socket.io": "1.0"
+    "socket.io": "1.0",
+    "mongodb-uri": "0.9.x"
  }
 }

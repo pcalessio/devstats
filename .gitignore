@@ -1,3 +1,4 @@
 postkeys/logger.txt
 .idea
 node_app/node_modules
+node_app/public/config.js

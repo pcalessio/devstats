@@ -10,7 +10,14 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var KeyEvent     = require('./model/keyEvent');
 
-mongoose.connect('mongodb://localhost/test');
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
+mongoose.connect("mongodb://seedhack_team:seedhack@ds053449.mongolab.com:53449/devstats", options);
+var conn = mongoose.connection;
+conn.on('error', console.error.bind(console, 'connection error:'));
+
+app.use(express.static(__dirname + '/public'));
+
 
 
 // configure app to use bodyParser()
@@ -44,11 +51,18 @@ router.route('/key/event')
         socket.emit('newKeyEvent', keyEvent);
         // save the bear and check for errors
         keyEvent.save(function(err) {
-            if (err)
+
+            if (err) {
+                console.log(err);
                 res.send(err);
+            }
+
+            console.log('created');
+            res.json({ message: 'Key event created!' });
+
         });
 
-        res.json({ message: 'Key event created!' });
+
     });
 
 app.get('/', function(req, res) {

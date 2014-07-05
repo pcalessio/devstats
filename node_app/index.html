@@ -4,15 +4,10 @@
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css"/>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular/angular-route.js"></script>
-  <script src="lib/angular/angular-resource.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+
   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="config.js"></script>
+
   <style type="text/css">
   .x.axis line {
   shape-rendering: auto;
@@ -36,6 +31,7 @@
   <div id="viz"></div>
 
   <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+
 
   <script>(function() {
 
@@ -87,7 +83,7 @@ var path = svg.append("g")
 
 tick();
 
-      var socket = io.connect('http://localhost');
+      var socket = io.connect(config.localhost);
       socket.on('newKeyEvent', function (data) {
           console.log(data);
           ++count; console.log("keypress", d3.event);
