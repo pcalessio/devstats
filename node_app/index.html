@@ -117,7 +117,7 @@ tick();
       var socket = io.connect(config.localhost);
       socket.on('newKeyEvent', function (data) {
           ++count;
-          g1.refresh(getRandomInt(0, 8));
+          g1.refresh(count);
           console.log('refreshed');
       });
 
