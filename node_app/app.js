@@ -37,7 +37,7 @@ var port = process.env.PORT || 3000; 		// set our port
 // =============================================================================
 var router = express.Router(); 				// get an instance of the express Router
 
-router.route('/key/event')
+router.route('/key/event/alessio')
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
 
@@ -53,6 +53,32 @@ router.route('/key/event')
 
         FileHitsManager.newFileHitsEvent(keyEvent.filepath, function(fileHits) {
             socket.emit('newKeyEvent', keyEvent);
+            socket.emit('alessioKeyEvent', keyEvent);
+            socket.emit('fileHit', fileHits);
+        });
+
+        KeyEventManager.save(keyEvent);
+
+        res.json({ message: 'Key event created!' });
+    });
+
+router.route('/key/event/daniele')
+    // create a bear (accessed at POST http://localhost:8080/api/bears)
+    .post(function(req, res) {
+
+        var keyEvent = new KeyEvent();
+        keyEvent.key = req.body.key;
+        keyEvent.timestamp = req.body.timestamp*1000;
+        keyEvent.type = req.body.type;
+        keyEvent.filepath = req.body.filepath;
+
+        MomentDayManager.updateMomentDate(keyEvent, function(momentDay) {
+            socket.emit('momentDay', momentDay);
+        });
+
+        FileHitsManager.newFileHitsEvent(keyEvent.filepath, function(fileHits) {
+            socket.emit('newKeyEvent', keyEvent);
+            socket.emit('danieleKeyEvent', keyEvent);
             socket.emit('fileHit', fileHits);
         });
 
