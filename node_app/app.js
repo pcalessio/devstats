@@ -8,7 +8,11 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
-var KeyEvent     = require('./model/keyEvent');
+
+var KeyEvent        = require('./model/keyEvent');
+var FileHitsManager = require('./manager/fileHitsManager');
+var KeyEventManager = require('./manager/keyEventManager');
+var MomentDayManager = require('./manager/momentDayManager');
 
 var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
     replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
@@ -16,10 +20,8 @@ mongoose.connect("mongodb://seedhack_team:seedhack@ds053449.mongolab.com:53449/d
 var conn = mongoose.connection;
 conn.on('error', console.error.bind(console, 'connection error:'));
 
-
+//serving static files
 app.use(express.static(__dirname + '/public'));
-
-
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -34,36 +36,28 @@ var port = process.env.PORT || 3000; 		// set our port
 // =============================================================================
 var router = express.Router(); 				// get an instance of the express Router
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/health', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
-});
-
 router.route('/key/event')
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
-        var keyEvent = new KeyEvent(); 		// create a new instance of the Bear model
 
-        keyEvent.key = req.body.key;  // set the bears name (comes from the request)
-        keyEvent.timestamp = req.body.timestamp;
+        var keyEvent = new KeyEvent();
+        keyEvent.key = req.body.key;
+        keyEvent.timestamp = req.body.timestamp*1000;
         keyEvent.type = req.body.type;
         keyEvent.filepath = req.body.filepath;
 
-        socket.emit('newKeyEvent', keyEvent);
-        // save the bear and check for errors
-        keyEvent.save(function(err) {
-
-            if (err) {
-                console.log(err);
-                res.send(err);
-            }
-
-            console.log('created');
-            res.json({ message: 'Key event created!' });
-
+        MomentDayManager.updateMomentDate(keyEvent, function(momentDay) {
+            socket.emit('momentDay', momentDay);
         });
 
+        FileHitsManager.newFileHitsEvent(keyEvent.filepath, function(fileHits) {
+            socket.emit('newKeyEvent', keyEvent);
+            socket.emit('fileHit', fileHits);
+        });
 
+        KeyEventManager.save(keyEvent);
+
+        res.json({ message: 'Key event created!' });
     });
 
 app.get('/', function(req, res) {
@@ -71,18 +65,14 @@ app.get('/', function(req, res) {
 });
 
 router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
     next(); // make sure we go to the next routes and don't stop here
 });
-
-// more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
 
-// START THE SERVER
+// START THE SERVER and socket.io
 // =============================================================================
 var listen = app.listen(port);
 console.log('Magic happens on port ' + port);
