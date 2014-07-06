@@ -28,7 +28,7 @@ angular.module('myApp.services', ['ngResource'])
             callback.apply(socket, args);
           }
         });
-      })
+      }) 
     }
   };
 });
