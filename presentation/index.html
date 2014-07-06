@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Dev Stat</title>
+
+    <meta charset='utf-8'>
+    <script
+      src='src/slides.js'></script>
+  </head>
+
+  <style>
+    
+    .nounderline {
+    		text-decoration: none;
+    }
+    
+    h3.bigger {
+        font-size: 70px;
+        line-height: 76px;
+    }
+    
+    p.bigger {
+        font-size: 200%;
+        line-height: 150%;
+    }
+    
+    .mypurple {
+      color: rgb(230, 87, 181);
+    }
+    
+    .mygreen {
+      color: rgb(126, 193, 56);
+    }
+    
+    .myred {
+      color: rgb(227, 94, 106);
+    }
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular template-default'>
+
+      <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+
+
+      <article>
+        <h1>
+          <img class='' style='zoom:50%; ' src='images/logo_trans.png'>
+        DevStats       
+        </h1>
+        <p>
+          <span class='blue'>Measure</span><span>your coding style</span> - Jul 06 2014
+          <br/>
+          <a class='nounderline' href='http://about.me/lucalanziani'>Luca Lanziani</a> - <a class='nounderline' href='https://twitter.com/#!/_Nss_'>@_Nss_</a>
+        </p>
+        <p>
+          <img class='fill current' style='height: 100%; width: 100%' src='images/first.jpg'>
+        </p>
+      </article>
+
+       <article class='fill'>
+        <h3 class='bigger'>
+          Today 
+        </h3>
+        <p>
+          <img class='centered' style='height: 100%; width: 100%' src='images/today.jpg'>
+        </p>
+      </article>
+
+      <article class='fill'>
+        <h3 class='bigger'>
+          but...what about?
+        </h3>
+        <p>
+          <img class='centered' style='height: 390px;' src='images/baby.jpg'>
+        </p>
+      </article>
+
+       <article class='bigger'>
+        <h3 class='bigger'>
+         ...developers love data...
+        </h3>
+        <p>
+          <img class='centered' style='height: 90%; width: 100%' src='images/data.jpg'>
+        </p>
+      </article>
+
+      <article class='bigger'>
+        <h3 class='bigger'>
+         ...and Sublime Text
+        </h3>
+        <p>
+          <img class='centered' style='height: 390px;' src='images/logo_sublime.png'>
+        </p>
+      </article>
+
+      <article>
+         <h3 class='bigger'>
+         Here we are
+        </h3>
+
+         <p>
+          <img class='centered' style='height: 100%; width: 100%' src='images/dashboard.png'>
+        </p>
+        
+      </article>
+
+      <article>
+        <h3 class='bigger'>Demo</h3>
+        <h4 class='bigger'>Alessio</h4>
+        <iframe frameborder="0" height="30" width="30" src="http://37.139.23.206:3000/alessio.html"></iframe>
+        <h4 class='bigger'>Daniele</h4>
+        <iframe frameborder="0" height="30" width="30" src="http://37.139.23.206:3000/daniele.html"></iframe>
+      </article>
+
+   <article class='bigger'>
+        <h3 class='bigger'>
+         Target
+        </h3>
+        <p>
+          <img class='centered' style='height: 590px;' src='images/erly.jpg'>
+        </p>
+      </article>
+
+   <article class='fill'>
+        <h3 class='bigger'>
+         Team
+        </h3>
+        <p>
+          <img class='centered' style='height: 100%; width: 100%' src='images/team.jpg'>
+        </p>
+      </article>
+
+
+      <article>
+        <h1>
+          <img class='' style='zoom:50%; ' src='images/logo_trans.png'>
+        DevStats       
+        </h1>
+        <p>
+          <span class='blue'>Measure</span><span>your coding style</span> - Jul 06 2014
+          <br/>
+          <a class='nounderline' href='http://about.me/lucalanziani'>Luca Lanziani</a> - <a class='nounderline' href='https://twitter.com/#!/_Nss_'>@_Nss_</a>
+        </p>
+        <p>
+          <img class='fill current' style='height: 100%; width: 100%' src='images/first.jpg'>
+        </p>
+      </article>
+
+
+      <article>
+        <h3 class='bigger'>Essence</h3>
+        <p class='bigger'>
+          <q>(just) a branching strategy and release management</q>
+          <div class='author'>
+            me
+          </div>
+        </p>
+      </article>
+
+      
+      
+      <article>
+        <h3 class='bigger'>
+          Main branches
+        </h3>
+        <p class='bigger'>
+          <strong>master</strong> and <strong>develop</strong> may be synced with the origin.
+        </p>
+        <dl>
+          <dt><span class="green">origin/master</span></dt>
+          <dd>always reflects a <strong>production-ready state.</strong></dd>
+        </dl>
+        <dl>
+        <dt><span class="green">origin/develop</span></dt>
+        <dd>always reflects <strong>latest delivered development changes</strong> for the next release.</dd>
+        </dl>
+      </article>
+      
+      <article>
+        <h3 class='bigger'>
+          Support branches
+        </h3>
+        <br/>
+        <br/>
+        <p class='bigger'>
+          <strong><span class="mypurple">feature</span> branches</strong><br/>
+          <strong><span class="myred">hotfix</span> branches</strong><br/>
+          <strong><span class="mygreen">release</span> branches</strong>
+        </p>
+      </article>
+    
+      <article>
+        <h3 class='bigger'>
+          Flow
+        </h3>
+         <p>
+          <img class='centered' style='height: 490px' src='images/gitflow_1.png'>
+        </p>
+      </article>
+    
+      <article class='smaller'>
+        <h3 class='bigger'>
+          Feature
+        </h3>
+        <ul>
+          <li>May branch off from: <code>develop</code></li>
+          <li>Must merge back into: <code>develop</code></li>
+        </ul>
+     
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> checkout -b <strong>myfeature</strong> <span class='str'>develop</span>
+<span class='com'>//Switched to a new branch "myfeature"</span>
+</pre>
+        <p>commit changes...</p>
+     
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> checkout <span class='str'>develop</span>
+//Switched to branch 'develop'
+$ <span class='lit'>git</span> merge <span class='kwd'>--no-ff</span> <strong>myfeature</strong>
+//Updating ea1b82a..05e9557
+$ <span class='lit'>git</span> branch -d <strong>myfeature</strong>
+//Deleted branch myfeature (was 05e9557).
+$ <span class='lit'>git</span> push origin <span class='str'>develop</span>
+</pre>
+      </article>
+      
+      <article>
+        <h3 class='bigger mypurple'>
+          Feature
+        </h3>
+        <p>
+          <img class='centered' style='height: 490px' src='images/gitflow_2.png'>
+        </p>
+      </article>
+    
+      <article class='smaller'>
+        <h3 class='bigger'>
+          Hotfix
+        </h3>
+        <ul>
+          <li>May branch off from: <code>master</code></li>
+          <li>Must merge back into: <code>develop</code> ad <code>master</code></li>
+        </ul>
+
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> checkout -b <strong>hotfix-1.2.1</strong> <span class='str'>master</span>
+</pre>
+        <p>bump the version...</p>
+
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> commit -a -m "bumped version number to 1.2.1"
+$ <span class='lit'>git</span> checkout <span class='str'>master</span>
+$ <span class='lit'>git</span> merge <span class='kwd'>--no-ff</span> <strong>hotfix-1.2.1</strong>
+$ <span class='lit'>git</span> tag -a <span class='str'>1.2.1</span>
+$ <span class='lit'>git</span> checkout <span class='str'>develop</span>
+$ <span class='lit'>git</span> merge <span class='kwd'>--no-ff</span> <strong>hotfix-1.2.1</strong>
+$ <span class='lit'>git</span> branch -d <strong>hotfix-1.2.1</strong>
+</pre>        
+      </article>
+      
+      <article>
+        <h3 class='bigger myred'>
+          Hotfix
+        </h3>
+        <p>
+          <img class='centered' style='height: 490px' src='images/gitflow_3.png'>
+        </p>
+      </article>
+      
+      
+      <article class='smaller'>
+        <h3 class='bigger'>
+          Release
+        </h3>
+        <ul>
+          <li>May branch off from: <code>develop</code></li>
+          <li>Must merge back into: <code>develop</code> ad <code>master</code></li>
+        </ul>
+
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> checkout -b <strong>release-1.2</strong> <span class='str'>develop</span>
+</pre>
+        <p>bump the version...</p>
+
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> commit -a -m "bumped version number to 1.2"
+$ <span class='lit'>git</span> checkout <span class='str'>master</span>
+$ <span class='lit'>git</span> merge <span class='kwd'>--no-ff</span> <strong>release-1.2</strong>
+$ <span class='lit'>git</span> tag -a <span class='str'>1.2</span>
+$ <span class='lit'>git</span> checkout <span class='str'>develop</span>
+$ <span class='lit'>git</span> merge <span class='kwd'>--no-ff</span> <strong>release-1.2</strong>
+$ <span class='lit'>git</span> branch -d <strong>release-1.2</strong>
+</pre>
+      </article>
+      
+      <article>
+        <h3 class='bigger mygreen'>
+          Release
+        </h3>
+        <p>
+          <img class='centered' style='height: 490px' src='images/gitflow_5.png'>
+        </p>
+      </article>
+      
+      <article>
+        <h3 class='bigger'>
+          Flow
+        </h3>
+        <p>
+          <img class='centered' style='height: 490px' src='images/gitflow.png'>
+        </p>
+      </article>
+        
+<!--        
+      <article class='hidden'>
+        <h3 class='bigger'>
+          should I be master?
+        </h3>
+        <p>
+        <img class='centered' style='height: 490px' src='images/octobiwan.jpg'>
+        </p>
+      </article>
+-->
+      <article class='fill'>
+        <h3 class='bigger'>
+          confusing?
+        </h3>
+        <p>
+          <img class='centered' style='height: 100%; width: 100%' src='images/DaffyDuck.jpg'>
+        </p>
+      </article>
+
+      <article class='fill'>
+        <h3 class='bigger'>
+          should I be master?
+        </h3>
+        <p>
+          <img class='centered' style='height: 100%; width: 100%' src='images/yoda.jpg'>
+        </p>
+      </article>
+      
+      <article>
+        <h3 class='bigger'>
+          NO, we have a surprise 
+        </h3>
+        <p>
+          <img class='centered' style='height: 490px' src='images/watching-cat.png'>
+        </p>
+      </article>
+
+      <article>
+        <h1>
+        gitflow
+        is a tool <a class='nounderline' href='https://github.com/nvie/gitflow'>[2]</a></h1><p>released in github by <a href='https://github.com/nvie'>nvie</a></p>
+      </article>
+    
+      <article class='smaller'>
+        <h3 class='bigger'>
+          Have it
+        </h3>
+        <div>OSX</div>
+        <pre class='prettyprint'>
+$ <span class='lit'>brew</span> install git-flow
+//or
+$ <span class='lit'>port</span> install git-flow
+</pre>
+<div>Linux</div>
+<pre class='prettyprint'>
+$ wget --no-check-certificate -q -O \
+- https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | \
+sudo bash
+</pre>
+<div>Windows</div>
+<div><strong>Really??</strong> Ok <a href='https://github.com/nvie/gitflow/wiki/Windows'>https://github.com/nvie/gitflow/wiki/Windows</a></div>
+      </article>
+    
+      <article class='smaller'>
+        <h3 class='bigger'>
+          Init it
+        </h3>
+        <div>Init a repo:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow init
+</pre>
+        <div>output:</div>
+<pre class='prettyprint'>
+No branches exist yet. Base branches must be created now.
+Branch name for production releases: [master] 
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? []
+</pre>
+      </article>
+    
+      <article>
+          <h3 class='bigger'>
+            Enjoy it (<span class='mypurple'>feature</span>)
+          </h3>
+          <br />
+          <div>Start a <span class='mypurple'>feature</span>:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow feature <span class='str'>start</span> <strong>myfeature</strong>
+</pre>
+        <br />
+        <div>End a <span class='mypurple'>feature</span>:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow feature <span class='str'>finish</span> <strong>myfeature</strong>
+</pre>
+
+      </article>
+  
+      <article>
+        <h3 class='bigger'>
+          Enjoy it (<span class='myred'>hotfix</span>)
+        </h3>
+        <br />
+        <div>Start an <span class='myred'>hotfix</span>:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow hotfix <span class='str'>start</span> <strong>hotfix-1.2.1</strong>
+</pre>
+        <br />
+        <div>End an <span class='myred'>hotfix</span>:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow feature <span class='str'>finish</span> <strong>hotfix-1.2.1</strong>
+</pre>
+
+      </article>
+    
+      <article>
+        <h3 class='bigger'>
+          Enjoy it (<span class='mygreen'>release</span>)
+        </h3>
+        <br />
+        <div>Start a <span class='mygreen'>release</span>:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow release <span class='str'>start</span> <strong>release-1.2</strong>
+</pre>
+        <br />
+        <div>End a <span class='mygreen'>release</span>:</div>
+<pre class='prettyprint'>
+$ <span class='lit'>git</span> flow feature <span class='str'>finish</span> <strong>release-1.2</strong>
+</pre>
+      </article>
+  
+  
+      <article>
+        <h3 class='bigger'>
+          Enjoy it (life is easy)
+        </h3>
+        <p>
+          <img class='centered' style='height: 490px' src='images/nyantocat.gif'>
+        </p>
+      </article>
+    
+      <article>
+        <h1>
+          The End
+        </h1>
+        <p>Thanks for watching</p>
+      </article>
+    
+      <article>
+        <h3 class='bigger'>
+          Refs
+        </h3>
+        <br />
+        <p>
+        <div>
+          Sources:
+        </div>
+        <br />
+        [1] <a href='http://nvie.com/posts/a-successful-git-branching-model/'>http://nvie.com/posts/a-successful-git-branching-model/</a><br />
+        [2] <a href='https://github.com/nvie/gitflow'>https://github.com/nvie/gitflow</a><br/><br/><br/>
+        Moar: <a href='http://yakiloo.com/getting-started-git-flow/'>http://yakiloo.com/getting-started-git-flow/</a><br/>
+        Images from: <a href='http://octodex.github.com/'>http://octodex.github.com/</a>
+      </article>
+    </section>
+  </body>
+</html>
