@@ -24,7 +24,7 @@ exports.updateMomentDate = function save(keyEvent, callback) {
                 momentDate.codingTime += diff;
             } else if(diff >= 0 && diff >= codingTimeInterval && diff < thinkingTimeInterval) {
                     momentDate.thinkingTime += diff;
-            } else if(diff >= thinkingTimeInterval
+            } else if(diff >= thinkingTimeInterval) {
                     momentDate.sleepingTime += diff;
             }
 

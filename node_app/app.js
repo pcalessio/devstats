@@ -64,6 +64,12 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+app.get('/keyFrequency', function(req, res) {
+    KeyEvent.find({}).exec(function(err, keys){
+        res.json(__(keys).countBy('key'))
+    })
+})
+
 router.use(function(req, res, next) {
     next(); // make sure we go to the next routes and don't stop here
 });
