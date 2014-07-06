@@ -1,3 +1,20 @@
 <div ng-controller="MyCtrl1">
 	<div graphs></div>
 </div>
+<div ng-controller="KeysCtrl">
+	<div class="">Total {{keys.length}}</div>
+
+	<div ng-controller="TimeSpentCtrl">	
+		<svg height="100" width="100">
+		  <circle cx="50" cy="50" ng-attr-r="{{sleepingTime * 50 / sum}}" fill="green" />
+		</svg>
+		<svg height="100" width="100">
+		  <circle cx="50" cy="50" ng-attr-r="{{thinkingTime * 50 / sum}}" fill="purple" />
+		</svg>
+		<svg height="100" width="100">
+		  <circle cx="50" cy="50" ng-attr-r="{{codingTime * 50 / sum}}" fill="blue" />
+		</svg>
+		
+		{{sleepingTime * 100 / sum}} {{thinkingTime * 100 / sum}} {{codingTime * 100 / sum}}
+	</div>
+</div>

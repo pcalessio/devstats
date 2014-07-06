@@ -8,6 +8,7 @@ var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
+var __ = require("underscore");
 
 var KeyEvent        = require('./model/keyEvent');
 var FileHitsManager = require('./manager/fileHitsManager');
@@ -67,6 +68,12 @@ app.get('/', function(req, res) {
 app.get('/keyFrequency', function(req, res) {
     KeyEvent.find({}).exec(function(err, keys){
         res.json(__(keys).countBy('key'))
+    })
+})
+
+app.get('/keys', function(req, res) {
+    KeyEvent.find({}).exec(function(err, keys){
+        res.json({count: keys.length, keys: keys})
     })
 })
 
