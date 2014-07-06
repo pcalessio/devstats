@@ -1,16 +1,37 @@
 'use strict';
 
-/* Services */
-var myAppServices = angular.module('myApp.services', ['ngResource']);
+angular.module('myApp.services', ['ngResource'])
 
-myAppServices.factory('Person', ['$resource',
+.factory('Person', ['$resource',
   function($resource){
     return $resource('data/persons.json', {}, {
       query: {method:'GET', isArray:true}
     });
-  }]);
-
-myAppServices.value('version', '0.1');
+  }])
+.value('version', '0.1')
+.factory('Socket', function ($rootScope) {
+  var socket = io.connect();
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {  
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      })
+    }
+  };
+});
 
 
 
