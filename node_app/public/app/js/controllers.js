@@ -19,6 +19,21 @@ angular.module('myApp.controllers', [])
 		  $scope.keys.push(data);
 	  });
   })
+  .controller('DanieleCtrl', function ($scope, $http, Socket){
+    $scope.keys = [];
+    $scope.daily_keys = 0;
+    $scope.daily_target = 10000;
+    Socket.on('DanieleKeyEvent', function(data) {
+      $scope.daily_keys++
+    });
+  }).controller('AlessioCtrl', function ($scope, $http, Socket){
+    $scope.keys = [];
+    $scope.daily_keys = 0;
+    $scope.daily_target = 10000;
+    Socket.on('AlessioKeyEvent', function(data) {
+      $scope.daily_keys++
+    });
+  })
   .controller('TimeSpentCtrl', function ($scope, $http, Socket){
 
 	  $scope.$watchCollection("keys", function(data) {
