@@ -22,14 +22,14 @@ angular.module('myApp.controllers', [])
   .controller('DanieleCtrl', function ($scope, $http, Socket){
     $scope.keys = [];
     $scope.daily_keys = 0;
-    $scope.daily_target = 10000;
+    $scope.daily_target = 500;
     Socket.on('DanieleKeyEvent', function(data) {
       $scope.daily_keys++
     });
   }).controller('AlessioCtrl', function ($scope, $http, Socket){
     $scope.keys = [];
     $scope.daily_keys = 0;
-    $scope.daily_target = 10000;
+    $scope.daily_target = 500;
     Socket.on('AlessioKeyEvent', function(data) {
       $scope.daily_keys++
     });

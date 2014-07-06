@@ -38,9 +38,12 @@ var port = process.env.PORT || 3000; 		// set our port
 var router = express.Router(); 				// get an instance of the express Router
 
 router.route('/key/event/alessio')
+    .get(function (req, res) {
+        res.send('Ok');
+    })
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
-
+        console.log('alessio');
         var keyEvent = new KeyEvent();
         keyEvent.key = req.body.key;
         keyEvent.timestamp = req.body.timestamp*1000;
@@ -53,7 +56,7 @@ router.route('/key/event/alessio')
 
         FileHitsManager.newFileHitsEvent(keyEvent.filepath, function(fileHits) {
             socket.emit('newKeyEvent', keyEvent);
-            socket.emit('alessioKeyEvent', keyEvent);
+            socket.emit('AlessioKeyEvent', keyEvent);
             socket.emit('fileHit', fileHits);
         });
 
@@ -65,7 +68,7 @@ router.route('/key/event/alessio')
 router.route('/key/event/daniele')
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function(req, res) {
-
+        console.log('daniele');
         var keyEvent = new KeyEvent();
         keyEvent.key = req.body.key;
         keyEvent.timestamp = req.body.timestamp*1000;
@@ -78,7 +81,7 @@ router.route('/key/event/daniele')
 
         FileHitsManager.newFileHitsEvent(keyEvent.filepath, function(fileHits) {
             socket.emit('newKeyEvent', keyEvent);
-            socket.emit('danieleKeyEvent', keyEvent);
+            socket.emit('DanieleKeyEvent', keyEvent);
             socket.emit('fileHit', fileHits);
         });
 
