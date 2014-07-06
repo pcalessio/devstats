@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+    <script src="/resources/js/raphael.2.1.0.min.js"></script>
+    <script src="/resources/js/justgage.1.0.1.min.js"></script>
+
+  <link rel="stylesheet" href="css/app.css"/>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="/config.js"></script>
+  <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+      body {
+          text-align: center;
+      }
+
+      #g1, #g2, #g3 {
+          width:200px; height:160px;
+          display: inline-block;
+          margin: 1em;
+      }
+
+      p {
+          display: block;
+          width: 450px;
+          margin: 2em auto;
+          text-align: left;
+      }
+
+  .x.axis line {
+  shape-rendering: auto;
+}
+
+.line {
+  fill: none;
+  stroke: #808080;
+  stroke-width: 1.5px;
+}
+
+.domain {
+  fill: none;
+  stroke: #efefef;
+  stroke-width: 2px;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <h1>DevStats <small>improve your coding skills</small></h1>
+  </div>
+  <div class="container">
+    <div ng-view></div>
+  </div>
+
+</body>
+</html>
