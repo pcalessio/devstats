@@ -1,8 +1,21 @@
-<p>This is the partial for view 2.</p>
 
-<!-- 
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p> 
--->
+<div ng-controller="MyCtrl2">
+	<table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>File Path</th>
+          <th>Key Stroke</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="filehit in filehits | orderBy : '-hits'  ">
+          <td>{{filehit.filename}}</td>
+          <td>{{filehit.hits}}</td>
+        </tr>    
+      </tbody>  
+    </table>    
+</div>  
+
+
+
+    

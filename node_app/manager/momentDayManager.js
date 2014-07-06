@@ -22,12 +22,10 @@ exports.updateMomentDate = function save(keyEvent, callback) {
 
             if(diff >= 0 && diff < codingTimeInterval) {
                 momentDate.codingTime += diff;
-            } else {
-                if(diff >= codingTimeInterval && diff < thinkingTimeInterval) {
+            } else if(diff >= 0 && diff >= codingTimeInterval && diff < thinkingTimeInterval) {
                     momentDate.thinkingTime += diff;
-                } else {
+            } else if(diff >= thinkingTimeInterval
                     momentDate.sleepingTime += diff;
-                }
             }
 
             momentDate.save();
