@@ -9,10 +9,10 @@ angular.module('myApp.controllers', [])
 	  $scope.keys = [];
     $scope.daily_keys = 0;
     $scope.daily_target = 10000;
-	  $http.get("http://127.0.0.1:3000/keys").success(function(data) {
+	  $http.get(config.localhost+":3000"+"/keys").success(function(data) {
 		  $scope.keys = data.keys;
 	  });
-    $http.get("http://127.0.0.1:3000/dailykeys").success(function(data) {
+    $http.get(config.localhost+":3000"+"/dailykeys").success(function(data) {
       $scope.daily_keys = data.count;
     });
 	  Socket.on('newKeyEvent', function(data) {
