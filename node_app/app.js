@@ -22,7 +22,7 @@ var conn = mongoose.connection;
 conn.on('error', console.error.bind(console, 'connection error:'));
 
 //serving static files
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/app'));
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -75,7 +75,13 @@ app.get('/keys', function(req, res) {
     KeyEvent.find({}).exec(function(err, keys){
         res.json({count: keys.length, keys: keys})
     })
-})
+});
+
+app.get('/dailykeys', function(req, res) {
+    KeyEvent.find({}).exec(function(err, keys){
+        res.json({count: keys.length})
+    })
+});
 
 router.use(function(req, res, next) {
     next(); // make sure we go to the next routes and don't stop here

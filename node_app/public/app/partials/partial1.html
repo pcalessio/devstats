@@ -1,20 +1,29 @@
-<div ng-controller="MyCtrl1">
-	<div graphs></div>
-</div>
-<div ng-controller="KeysCtrl">
-	<div class="">Total {{keys.length}}</div>
-
-	<div ng-controller="TimeSpentCtrl">	
-		<svg height="100" width="100">
-		  <circle cx="50" cy="50" ng-attr-r="{{sleepingTime * 50 / sum}}" fill="green" />
-		</svg>
-		<svg height="100" width="100">
-		  <circle cx="50" cy="50" ng-attr-r="{{thinkingTime * 50 / sum}}" fill="purple" />
-		</svg>
-		<svg height="100" width="100">
-		  <circle cx="50" cy="50" ng-attr-r="{{codingTime * 50 / sum}}" fill="blue" />
-		</svg>
-		
-		{{sleepingTime * 100 / sum}} {{thinkingTime * 100 / sum}} {{codingTime * 100 / sum}}
+<div class="row">
+	<div ng-controller="KeysCtrl">
+		<div class="row">
+			<h2>Today you are at {{daily_keys}} keystroke of {{daily_target}}</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+				<div class="progress">
+		  			<div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="{{daily_keys}}" aria-valuemin="0" aria-valuemax="{{daily_target}}"
+		  				style="width: {{100 / (daily_target/daily_keys)}}%">
+		    			<span class="sr-only">45% Complete</span>
+		  			</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div ng-controller="MyCtrl1">
+			<div graphs></div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div speed></div>
+	</div>
+</div>
+

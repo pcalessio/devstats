@@ -11,7 +11,7 @@ angular.module('myApp.directives', []).
   }]).
   directive('graphs', function(Socket) {
   	return {
-  		template: "<div id='viz'></div><div id='g1'></div>",
+  		template: "<div id='viz'></div>",
   		link: function(scope, element, attr) {
 
   			var n = 243,
@@ -19,20 +19,6 @@ angular.module('myApp.directives', []).
           now = new Date(Date.now() - duration),
           count = 0,
           data = d3.range(n).map(function() { return 0; });
-
-        var g1 = new JustGage({
-          id: "g1",
-          value: 0,
-          min: 0,
-          max: 6,
-          title: "Lone Ranger",
-          label: "miles traveled"
-        });
-
-        setInterval(function() {
-          g1.refresh(2*count);
-        }, 120);
-
 
         var margin = {top: 6, right: 0, bottom: 20, left: 40},
   		    width = 550 - margin.right,
@@ -79,12 +65,9 @@ angular.module('myApp.directives', []).
 	      var socket = io.connect(config.localhost);
 	      socket.on('newKeyEvent', function (data) {
 	          ++count;
-	          g1.refresh(2*count);
-	          console.log('refreshed');
 	      });
 
   			function tick() {
-
   			  // update the domains
   			  now = new Date();
   			  x.domain([now - (n - 2) * duration, now - duration]);
@@ -122,7 +105,59 @@ angular.module('myApp.directives', []).
   			function tickTimeout() {
   			  tick();
   			}
-
 			}
   	}
+  }).
+  directive('speed', function(Socket) {
+    return {
+      template: "<div id='g1'></div>",
+      link: function(scope, element, attr) {
+
+        var n = 243,
+          duration = 120,
+          now = new Date(Date.now() - duration),
+          count = 0;
+
+        var g1 = new JustGage({
+          id: "g1",
+          value: 0,
+          min: 0,
+          max: 6,
+          title: "Lone Ranger",
+          label: "miles traveled"
+        });
+
+        setInterval(function() {
+          tick();
+          g1.refresh(2*count);
+        }, 200);
+
+
+        var margin = {top: 6, right: 0, bottom: 20, left: 40},
+          width = 550 - margin.right,
+          height = 120 - margin.top - margin.bottom;
+
+        tick();
+
+        var socket = io.connect(config.localhost);
+        socket.on('newKeyEvent', function (data) {
+            ++count;
+            g1.refresh(2*count);
+        });
+
+        function tick() {
+          // update the domains
+          now = new Date();
+          // push the accumulated count onto the back, and reset the count
+          count = 0;
+        }
+
+        var yes = 0;
+
+        function tickTimeout() {
+          tick();
+        }
+
+      }
+    }
   })
