@@ -16,7 +16,7 @@ angular.module('myApp.controllers', [])
       $scope.daily_keys = data.count;
     });
 	  Socket.on('newKeyEvent', function(data) {
-		  $scope.keys.push(data);
+		  $scope.daily_keys++;
 	  });
   })
   .controller('DanieleCtrl', function ($scope, $http, Socket){
